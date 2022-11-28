@@ -1,4 +1,4 @@
 <?php
 $lang = [
-
+    'Language' => 'Language'
 ];
