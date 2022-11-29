@@ -120,7 +120,7 @@ jquery__WEBPACK_IMPORTED_MODULE_0___default().extend((jquery__WEBPACK_IMPORTED_M
     options: {
       help: 'Help',
       fullscreen: 'Full Screen',
-      codeview: 'Code View'
+      codeview: 'Code view'
     },
     paragraph: {
       paragraph: 'Paragraph',

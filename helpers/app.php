@@ -17,7 +17,7 @@ function route(int $index)
  */
 function view(string $viewName, $data = null)
 {
-    if (file_exists(BASEDIR . '/View/' . $viewName . '.php')) require BASEDIR . '/View/' . $viewName . '.php';
+    if (file_exists(BASEDIR . '/vview/' . $viewName . '.php')) require BASEDIR . '/viview/' . $viewName . '.php';
     else return false;
 }
 

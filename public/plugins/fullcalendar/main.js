@@ -3013,7 +3013,7 @@ var FullCalendar = (function (exports) {
             }
             (_a = this.currentDataManager.emitter).trigger.apply(_a, __spreadArray([handlerName], args));
         };
-        // View
+        // view
         // -----------------------------------------------------------------------------------------------------------------
         CalendarApi.prototype.changeView = function (viewType, dateOrRange) {
             var _this = this;
