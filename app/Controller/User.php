@@ -10,4 +10,5 @@ class User extends BaseController
     {
         $users = $this->db->query("SELECT * FROM users WHERE users.id ='$id'",true);
     }
+
 }

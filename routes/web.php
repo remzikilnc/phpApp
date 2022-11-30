@@ -8,5 +8,4 @@ if (version_compare(phpversion(), '8', '<')) {
 session_start();
 
 $cms->router->match('GET|POST', '/', function () {
-    echo 'w';
 });

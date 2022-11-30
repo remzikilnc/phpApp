@@ -11,7 +11,7 @@ class Database
 
     public function __construct()
     {
-        require_once BASEDIR . 'config/database.php';
+        require_once BASEDIR . '/config/database.php';
         try {
             if (!isset($database_config['type']) || !isset($database_config['host']) || !isset($database_config['database']) || !isset($database_config['username'])) {
                 die();
