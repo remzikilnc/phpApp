@@ -1,5 +1,5 @@
 <?php
-
+/*
 namespace Core;
 
 class Request
@@ -18,4 +18,4 @@ class Request
     {
         return is_array($data) ? array_map('\Core\Request::filter', $data) : htmlspecialchars(trim($data));
     }
-}
+}*/

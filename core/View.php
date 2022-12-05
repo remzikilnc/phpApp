@@ -5,18 +5,19 @@ namespace Core;
 class View
 {
     public $content;
-
-    public function load(string $viewName,array $data=[])
+    public function load(string $viewName, array $data=[])
     {
         ob_start();
-        require BASEDIR.'/app/View'.$viewName.'.php';
+        extract($data);
+        require BASEDIR.'/app/View/'.$viewName.'.php';
         $this->content = ob_get_contents();
         ob_clean();
+        return $this;
     }
-
     public function __destruct()
     {
         echo $this->content;
     }
+
 
 }

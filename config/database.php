@@ -1,6 +1,10 @@
 <?php
-$database_config['type'] ='mysql';
-$database_config['host'] ='localhost';
-$database_config['database'] ='todo_list';
-$database_config['username'] ='root';
-$database_config['password'] = '';
+$database_config = [
+    'driver' => 'mysql',
+    'host' => 'localhost',
+    'database' => 'todo_list',
+    'username' => 'root',
+    'password' => '',
+    'charset' => 'utf8',
+    ];
+?>

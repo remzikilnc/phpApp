@@ -7,18 +7,21 @@ use PDOException;
 
 class Database
 {
-    protected \PDO $connect;
+    public \PDO $connect;
 
+    /**
+     * @throws \ErrorException
+     */
     public function __construct()
     {
-        require_once BASEDIR . '/config/database.php';
+        $config = self::getMysqlConfig();
         try {
-            if (!isset($database_config['type']) || !isset($database_config['host']) || !isset($database_config['database']) || !isset($database_config['username'])) {
+            if (!isset($config['driver']) || !isset($config['host']) || !isset($config['database']) || !isset($config['username'])|| !isset($config['password'] )) {
+                throw new \ErrorException('There is a error about your database.',502);
                 die();
             }
-            $this->connect = new \PDO($database_config['type'] . ':host=' . $database_config['host'] . ';dbname=' . $database_config['database'], $database_config['username'], $database_config['password']);
-            $this->connect->query('SET CHARACTER SET utf8');
-            $this->connect->query('SET NAMES utf8');
+            $this->connect = new \PDO($config['driver'] . ':host=' . $config['host'] . ';dbname=' . $config['database'], $config['username'], $config['password']);
+            $this->connect->query('SET CHARACTER SET '.$config['charset'] ?? 'utf8');
         } catch (PDOException $e) {
             throw new Exception($e);
         }
@@ -29,7 +32,7 @@ class Database
      * @param bool $multi
      * @return array|false|mixed
      */
-    public function query($sql, bool $multi = false):Array
+    public function query($sql, bool $multi = false): array
     {
         if ($multi === false) {
             return $this->connect->query($sql, \PDO::FETCH_ASSOC)->fetch() ?? [];
@@ -37,5 +40,17 @@ class Database
         } else {
             return $this->connect->query($sql, \PDO::FETCH_ASSOC)->fetchAll() ?? [];
         }
+    }
+
+    private static function getMysqlConfig():array
+    {
+        require BASEDIR . '/config/database.php';
+        $config['driver'] = $database_config['driver'];
+        $config['host'] = $database_config['host'];
+        $config['database'] = $database_config['database'];
+        $config['username'] = $database_config['username'];
+        $config['password'] = $database_config['password'];
+        $config['charset'] = $database_config['charset'];
+        return $config;
     }
 }

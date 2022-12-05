@@ -14,4 +14,10 @@ class Session
         $_SESSION[$name] = $value;
     }
 
+    public function removeSession()
+    {
+        session_start();
+        session_destroy();
+    }
+
 }

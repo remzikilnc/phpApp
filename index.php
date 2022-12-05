@@ -1,13 +1,24 @@
 <?php
-
-require __DIR__.'/config/config.php';
-require __DIR__ . '/routes/autoload.php';
-
+require __DIR__ . '/config/config.php';
+require BASEDIR . '/routes/autoload.php';
+require BASEDIR . '/app/Helpers/app.php';
 $loader = new Psr4AutoloaderClass();
+
 $loader->addNamespace('App', '/app');
 $loader->addNamespace('Core', '/core');
+$loader->addNamespace('Symfony\Component\HttpFoundation', '/app/Library/HttpFoundation');
 $loader->register();
 
 
+if (version_compare(phpversion(), '8', '<')) {
+    print_r('Php versiyonunuz: ' . phpversion());
+    echo '<br>';
+    print_r(phpversion() . ' web.php' . 'uygulamayı kullanabilmek için uyumlu değil.');
+    exit();
+}
+
+
+session_start();
 $cms = new \Core\Starter();
-require __DIR__ . '/routes/route.php';
+$router = $cms->router;
+require BASEDIR . '/routes/route.php';

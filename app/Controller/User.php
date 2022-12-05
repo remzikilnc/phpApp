@@ -1,14 +1,17 @@
 <?php
 
-namespace App\Controllers;
+namespace App\Controller;
 
 use Core\BaseController;
-
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 class User extends BaseController
 {
-    public function showProfile($id)
-    {
-        $users = $this->db->query("SELECT * FROM users WHERE users.id ='$id'",true);
+    public function index(Request $request, Response $response) {
+        $response->setContent('Hello World');
+        return $response;
     }
-
+    public function showProfile(Request $request, Response $response)
+    {
+    }
 }

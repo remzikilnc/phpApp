@@ -1,11 +1,9 @@
 <?php
-if (version_compare(phpversion(), '8', '<')) {
-    print_r('Php versiyonunuz: ' . phpversion());
-    echo '<br>';
-    print_r(phpversion() . ' web.php' . 'uygulamayı kullanabilmek için uyumlu değil.');
-    exit();
-}
-session_start();
 
-$cms->router->match('GET|POST', '/', function () {
+
+$router->get('/deneme', 'Deneme@Test');
+$router->get('/users', 'User@showProfile');
+$router->group('todos',function () use ($router){
+    $router->get('/', 'Todo@index');
+    $router->post('/test', 'Todo@create');
 });

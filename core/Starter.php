@@ -2,18 +2,28 @@
 
 namespace Core;
 
+
+use App\Library\Router\Router;
+
 class Starter
 {
-    public \App\Library\Router\Router $router;
-    public Request $request;
+    public Router $router;
     public View $view;
-    protected Database $db;
+    public Database $db;
 
     public function __construct()
     {
-        $this->router = new \App\Library\Router\Router();
+        $this->router = new Router([
+            'base_folder' => BASEDIR,
+            'main_method' => 'main',
+            'paths' => [
+                'controllers' => 'app/Controller',
+            ],
+            'namespaces' => [
+                'controllers' => 'App\Controller',
+            ],
+        ]);
         $this->db = new Database();
-        $this->request = new Request();
         $this->view = new View();
     }
 }
