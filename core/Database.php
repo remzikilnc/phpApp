@@ -2,28 +2,28 @@
 
 namespace Core;
 
-use mysql_xdevapi\Exception;
+use App\Library\Response\JsonResponse;
+use ErrorException;
+use PDO;
 use PDOException;
 
 class Database
 {
-    public \PDO $connect;
+    public PDO $connect;
 
     /**
-     * @throws \ErrorException
+     * @throws ErrorException
      */
     public function __construct()
     {
         $config = self::getMysqlConfig();
         try {
-            if (!isset($config['driver']) || !isset($config['host']) || !isset($config['database']) || !isset($config['username'])|| !isset($config['password'] )) {
-                throw new \ErrorException('There is a error about your database.',502);
-                die();
-            }
-            $this->connect = new \PDO($config['driver'] . ':host=' . $config['host'] . ';dbname=' . $config['database'], $config['username'], $config['password']);
-            $this->connect->query('SET CHARACTER SET '.$config['charset'] ?? 'utf8');
+            $this->connect = new PDO($config['driver'] . ':host=' . $config['host'] . ';dbname=' . $config['database'], $config['username'], $config['password']);
+            $this->connect->query('SET CHARACTER SET ' . $config['charset'] ?? 'utf8');
         } catch (PDOException $e) {
-            throw new Exception($e);
+            $response = new JsonResponse();
+            $response->setStatusCode(500)->setMessage("Database Connection Error")->send();
+            exit();
         }
     }
 
@@ -35,14 +35,14 @@ class Database
     public function query($sql, bool $multi = false): array
     {
         if ($multi === false) {
-            return $this->connect->query($sql, \PDO::FETCH_ASSOC)->fetch() ?? [];
+            return $this->connect->query($sql, PDO::FETCH_ASSOC)->fetch() ?? [];
 
         } else {
-            return $this->connect->query($sql, \PDO::FETCH_ASSOC)->fetchAll() ?? [];
+            return $this->connect->query($sql, PDO::FETCH_ASSOC)->fetchAll() ?? [];
         }
     }
 
-    private static function getMysqlConfig():array
+    private static function getMysqlConfig(): array
     {
         require BASEDIR . '/config/database.php';
         $config['driver'] = $database_config['driver'];

@@ -115,7 +115,9 @@ class JsonResponse extends Response
 
     public function sendParent()
     {
-
+        if (empty($this->json->paging)) {
+            unset($this->json->paging);
+        }
         $this->headers->set("Content-Type", "application/json");
         $this->setContent($this->json->__toJson());
         parent::send();
