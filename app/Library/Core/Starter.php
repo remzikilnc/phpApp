@@ -1,8 +1,8 @@
 <?php
 
-namespace Core;
+namespace App\Library\Core;
 
-
+use App\Library\Database\Database;
 use App\Library\Router\Router;
 
 class Starter
@@ -26,4 +26,5 @@ class Starter
         $this->db = new Database();
         $this->view = new View();
     }
+
 }

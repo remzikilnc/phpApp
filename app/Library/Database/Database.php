@@ -1,9 +1,8 @@
 <?php
 
-namespace Core;
+namespace App\Library\Database;
 
 use App\Library\Response\JsonResponse;
-use ErrorException;
 use PDO;
 use PDOException;
 

@@ -2,7 +2,8 @@
 
 namespace App\Model;
 
-use Core\BaseModel;
+
+use App\Library\Core\BaseModel;
 
 class TaskException extends \Exception {}
 class Task extends BaseModel
