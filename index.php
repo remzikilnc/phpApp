@@ -19,6 +19,14 @@ if (version_compare(phpversion(), '8', '<')) {
 
 
 session_start();
-$cms = new \Core\Starter();
-$router = $cms->router;
+$router= new App\Library\Router\Router([
+    'base_folder' => BASEDIR,
+    'main_method' => 'main',
+    'paths' => [
+        'controllers' => 'app/Controller',
+    ],
+    'namespaces' => [
+        'controllers' => 'App\Controller',
+    ],
+]);
 require BASEDIR . '/routes/route.php';

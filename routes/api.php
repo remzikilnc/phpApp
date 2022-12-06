@@ -1,7 +1,8 @@
 <?php
-/*$cms->router->mount('/api',function ()use ($cms){
+$router->group('api', function ($api) use ($router) {
 
-    $cms->router->get('user',function (){
-        echo 'Foo';
+    $router->group('todos', function ($api) use ($api) {
+        $api->get('test', 'Todo@index');
     });
-});*/
+
+});

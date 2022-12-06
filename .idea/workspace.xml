@@ -5,16 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a2e57594-e98a-4bd2-b65c-a65751adabbc" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Model/Task.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Controller/Deneme.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Controller/Requests/BaseRequest.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Controller/Todo.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Controller/Todo.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Controller/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Controller/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Library/Response/JsonResponse.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Library/Response/JsonResponse.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/View/home/home.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/View/todo/todo.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/View/user/todo/todo.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/Database.php" beforeDir="false" afterPath="$PROJECT_DIR$/core/Database.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/Request.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -43,23 +36,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "NewWatcherDialog.advanced.open": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/laragon/www/todo",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "watcher.settings",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;NewWatcherDialog.advanced.open&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/laragon/www/todo&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;watcher.settings&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\laragon\www\todo\app\Library\Validation" />
@@ -103,6 +96,7 @@
       <workItem from="1670135967842" duration="6214000" />
       <workItem from="1670182435671" duration="5994000" />
       <workItem from="1670222451667" duration="5842000" />
+      <workItem from="1670309558784" duration="80000" />
     </task>
     <servers />
   </component>
