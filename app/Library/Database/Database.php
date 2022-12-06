@@ -11,9 +11,6 @@ class Database
 {
     public PDO $connect;
 
-    /**
-     * @throws ErrorException
-     */
     public function __construct()
     {
         $config = self::getMysqlConfig();
@@ -30,13 +27,12 @@ class Database
     /**
      * @param $sql
      * @param bool $multi
-     * @return array|false|mixed
+     * @return array
      */
     public function query($sql, bool $multi = false): array
     {
         if ($multi === false) {
             return $this->connect->query($sql, PDO::FETCH_ASSOC)->fetch() ?? [];
-
         } else {
             return $this->connect->query($sql, PDO::FETCH_ASSOC)->fetchAll() ?? [];
         }
