@@ -2,7 +2,7 @@
 
 namespace App\Library\Core;
 
-class BaseController extends Starter
+class BaseController
 {
 
 }

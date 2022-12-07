@@ -5,36 +5,23 @@ namespace App\Library\Database;
 use App\Library\Response\JsonResponse;
 use PDO;
 use PDOException;
+use Pixie\Connection;
+use Pixie\Exception;
+use Pixie\QueryBuilder\QueryBuilderHandler;
 
 class Database
 {
-    public PDO $connect;
-
-    public function __construct()
-    {
-        $config = self::getMysqlConfig();
-        try {
-            $this->connect = new PDO($config['driver'] . ':host=' . $config['host'] . ';dbname=' . $config['database'], $config['username'], $config['password']);
-            $this->connect->query('SET CHARACTER SET ' . $config['charset'] ?? 'utf8');
-        } catch (PDOException $e) {
-            $response = new JsonResponse();
-            $response->setStatusCode(500)->setMessage("Database Connection Error")->send();
-            exit();
-        }
-    }
 
     /**
-     * @param $sql
-     * @param bool $multi
-     * @return array
+     * @throws Exception
      */
-    public function query($sql, bool $multi = false): array
+    public static function getQueryBuilder(): QueryBuilderHandler
     {
-        if ($multi === false) {
-            return $this->connect->query($sql, PDO::FETCH_ASSOC)->fetch() ?? [];
-        } else {
-            return $this->connect->query($sql, PDO::FETCH_ASSOC)->fetchAll() ?? [];
+        $connection = Connection::getStoredConnection();
+        if ($connection !== null){
+            return new QueryBuilderHandler($connection, \PDO::FETCH_ASSOC);
         }
+        return new QueryBuilderHandler(new Connection( 'mysql', self::getMysqlConfig()), \PDO::FETCH_ASSOC);
     }
 
     private static function getMysqlConfig(): array
@@ -48,4 +35,5 @@ class Database
         $config['charset'] = $database_config['charset'];
         return $config;
     }
+
 }

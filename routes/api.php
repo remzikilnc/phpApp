@@ -1,7 +1,7 @@
 <?php
 $router->group('api', function ($api) use ($router) {
 
-    $router->group('todos', function ($api) use ($api) {
+    $router->group('todos', function () use ($api) {
         $api->get('test', 'Todo@index');
     });
 

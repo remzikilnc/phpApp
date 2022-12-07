@@ -2,13 +2,12 @@
 require __DIR__ . '/config/config.php';
 require BASEDIR . '/routes/autoload.php';
 require BASEDIR . '/app/Helpers/app.php';
-$loader = new Psr4AutoloaderClass();
 
+$loader = new Psr4AutoloaderClass();
 $loader->addNamespace('App', '/app');
 $loader->addNamespace('Core', '/core');
 $loader->addNamespace('Symfony\Component\HttpFoundation', '/app/Library/HttpFoundation');
 $loader->register();
-
 
 if (version_compare(phpversion(), '8', '<')) {
     print_r('Php versiyonunuz: ' . phpversion());
@@ -16,7 +15,6 @@ if (version_compare(phpversion(), '8', '<')) {
     print_r(phpversion() . ' web.php' . 'uygulamayı kullanabilmek için uyumlu değil.');
     exit();
 }
-
 
 session_start();
 $router= new App\Library\Router\Router([
@@ -29,4 +27,5 @@ $router= new App\Library\Router\Router([
         'controllers' => 'App\Controller',
     ],
 ]);
+
 require BASEDIR . '/routes/route.php';
