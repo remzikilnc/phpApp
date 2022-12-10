@@ -5,8 +5,9 @@ require BASEDIR . '/app/Helpers/app.php';
 
 $loader = new Psr4AutoloaderClass();
 $loader->addNamespace('App', '/app');
-$loader->addNamespace('Core', '/core');
 $loader->addNamespace('Symfony\Component\HttpFoundation', '/app/Library/HttpFoundation');
+$loader->addNamespace('Pixie', '/app/Library/QueryBuilder/Pixie');
+$loader->addNamespace('Viocon', '/app/Library/QueryBuilder/Viocon');
 $loader->register();
 
 if (version_compare(phpversion(), '8', '<')) {

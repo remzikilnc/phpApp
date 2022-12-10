@@ -106,7 +106,7 @@ class BaseRouter
     private $request;
 
     /** @var bool */
-    private $debug = false;
+    private $debug = true;
 
     /**
      * BaseRouter constructor method.

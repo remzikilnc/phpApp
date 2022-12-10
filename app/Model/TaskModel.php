@@ -3,11 +3,13 @@
 namespace App\Model;
 
 
-use App\Library\Core\BaseModel;
+use App\Core\BaseModel;
 
 class TaskException extends \Exception {}
-class Task extends BaseModel
+
+class TaskModel extends BaseModel
 {
+    protected static string $table = 'to';
     private int $_id;
     private string $_title;
     private int $_status;

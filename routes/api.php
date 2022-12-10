@@ -2,7 +2,7 @@
 $router->group('api', function ($api) use ($router) {
 
     $router->group('todos', function () use ($api) {
-        $api->get('test', 'Todo@index');
+        $api->get('test', 'Todo@test');
     });
 
 });

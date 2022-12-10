@@ -2,7 +2,7 @@
 $database_config = [
     'driver' => 'mysql',
     'host' => 'localhost',
-    'database' => 'todo_list',
+    'database' => 'todo',
     'username' => 'root',
     'password' => '',
     'charset' => 'utf8',

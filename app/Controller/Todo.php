@@ -2,10 +2,10 @@
 
 namespace App\Controller;
 
-use App\Library\Core\BaseController;
+use App\Core\BaseController;
 use App\Library\Response\JsonResponse;
-use App\Model\Task;
-use App\Model\TaskException;
+use App\Model\TaskModel;
+use Pixie\Exception;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -15,13 +15,7 @@ class Todo extends BaseController
 
     public function index()
     {
-        $todos = $this->db->query("SELECT * FROM todos_list", true);
-        try {
-            $response = new JsonResponse();
-            $response->setStatus(201)->setData($todos)->sendParent();
-        } catch (TaskException $exception) {
-            echo 'Error:' . $exception->getMessage();
-        }
+
     }
 
     public function create(Request $request, Response $response)
@@ -33,14 +27,13 @@ class Todo extends BaseController
         ])->sendParent();
     }
 
+    /**
+     * @throws Exception
+     */
     public function test()
     {
-        try {
-            $task = new Task(1, 'deneme', 1, 5);
-            $response = new JsonResponse();
-            $response->setStatus(201)->setData($task->returnTaskAsArray())->sendParent();
-        } catch (TaskException $exception) {
-            echo 'Error:' . $exception->getMessage();
-        }
+        $testQuery = TaskModel::where('id','=','1');
+        var_dump($testQuery->get());
+
     }
 }
