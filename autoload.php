@@ -118,7 +118,7 @@ class Psr4AutoloaderClass
      */
     protected function requireFile($file)
     {
-        $file = __DIR__."/../".$file;
+        $file = __DIR__.$file;
         if (file_exists($file)) {
             require $file;
             return true;

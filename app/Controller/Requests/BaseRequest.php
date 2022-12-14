@@ -16,7 +16,7 @@ interface BaseRequestInterface
 
 class BaseRequest extends Request implements BaseRequestInterface
 {
-    use RequestValidation
+    use RequestValidation;
 
     protected $initialRequest = null;
     protected string $apiVersion;
@@ -25,7 +25,6 @@ class BaseRequest extends Request implements BaseRequestInterface
     public function __construct(Request $request)
     {
         $this->initialRequest = $request;
-
         $query = $this->initialRequest->query->all();
         $request_data = !empty($this->initialRequest->request) ? $this->initialRequest->request->all() : null;
         $cookies = !empty($this->initialRequest->cookies) ? $this->initialRequest->cookies->all() : [];
@@ -46,17 +45,13 @@ class BaseRequest extends Request implements BaseRequestInterface
         $this->detectRequest();
     }
 
-    public function run()
+    public function detectRequest()
     {
-        static::prepareRequestDataForValidation($this->initialRequest);
-    }
-
-    public function detectRequest(){
         try {
-            $uri = explode("/",ltrim($this->getRequestUri(), '/'));
+            $uri = explode("/", ltrim($this->getRequestUri(), '/'));
             $this->apiVersion = $uri[1];
             $this->apiGroup = $uri[2];
-            switch ($this->apiGroup){
+            switch ($this->apiGroup) {
                 case 'admin':
                     $this->adminRequest();
                     break;
@@ -64,9 +59,10 @@ class BaseRequest extends Request implements BaseRequestInterface
                     $this->userRequest();
                     break;
             }
-        }catch (Exception $exception){
+        } catch (Exception $exception) {
             $this->userRequest();
         }
-        $this->run();
+
+        static::prepareRequestDataForValidation($this->initialRequest);
     }
 }

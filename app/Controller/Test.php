@@ -10,19 +10,20 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 
-class Todo extends BaseController
+class Test extends BaseController
 {
 
     public function index()
     {
-
+        $response = new JsonResponse();
+        $response->setStatusCode(200)->setStatus(true)->setMessage('Test Success.')->sendParent();
     }
 
     public function create(Request $request, Response $response)
     {
         $message = $request->get('test');
         $response = new JsonResponse();
-        $response->setStatusCode(200)->setStatus(true)->setMessage('yar')->setData([
+        $response->setStatusCode(200)->setStatus(true)->setMessage('Test Create Method Success.')->setData([
             'data' => $message
         ])->sendParent();
     }
@@ -34,6 +35,5 @@ class Todo extends BaseController
     {
         $testQuery = TaskModel::where('id','=','1');
         var_dump($testQuery->get());
-
     }
 }

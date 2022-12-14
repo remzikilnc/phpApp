@@ -103,7 +103,7 @@ class BaseRouter
     protected $middlewareGroups = [];
 
     /** @var RouterRequest */
-    private $request;
+    protected $request;
 
     /** @var bool */
     private $debug = true;

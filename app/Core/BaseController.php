@@ -3,6 +3,7 @@
 namespace App\Core;
 
 use App\Library\Response\JsonResponse;
+use Symfony\Component\HttpFoundation\Exception\BadRequestException;
 
 class BaseController
 {

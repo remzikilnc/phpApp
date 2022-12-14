@@ -1,14 +1,16 @@
 <?php
-require __DIR__ . '/config/config.php';
-require BASEDIR . '/routes/autoload.php';
-require BASEDIR . '/app/Helpers/app.php';
 
-$loader = new Psr4AutoloaderClass();
-$loader->addNamespace('App', '/app');
-$loader->addNamespace('Symfony\Component\HttpFoundation', '/app/Library/HttpFoundation');
-$loader->addNamespace('Pixie', '/app/Library/QueryBuilder/Pixie');
-$loader->addNamespace('Viocon', '/app/Library/QueryBuilder/Viocon');
-$loader->register();
+ini_set("display_errors", 1);
+ini_set("display_startup_errors", 1);
+error_reporting(E_ALL & ~E_WARNING & ~E_NOTICE & ~E_STRICT & ~E_DEPRECATED);
+// ini_set("log_errors", 1);
+
+const ROOT_PATH = __DIR__;
+require_once 'bootstrap.php';
+
+/*require BASEDIR . '/app/Helpers/app.php';
+
+
 
 if (version_compare(phpversion(), '8', '<')) {
     print_r('Php versiyonunuz: ' . phpversion());
@@ -29,4 +31,4 @@ $router= new App\Library\Router\Router([
     ],
 ]);
 
-require BASEDIR . '/routes/route.php';
+require BASEDIR . '/routes/route.php';*/
